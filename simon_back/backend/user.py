@@ -14,8 +14,8 @@ def get(request: HttpRequest) -> JsonResponse:
 
 
 @require_http_methods(["GET"])
-def get_by_id(request: HttpRequest) -> JsonResponse:
-    user = User.objects.get(Q(id=request.GET.get("user_id")))
+def get_by_id(request: HttpRequest, user_id: str) -> JsonResponse:
+    user = User.objects.get(Q(user_id))
     return JsonResponse(list(map(serialize, user)), safe=False)
 
 

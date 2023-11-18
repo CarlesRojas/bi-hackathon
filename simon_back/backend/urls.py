@@ -3,7 +3,7 @@ from . import user, medication, medication_history, event, result
 
 urlpatterns = [
     path("users", user.get),
-    path("user", user.get_by_id),
+    path("user<str:user_id>", user.get_by_id),
     path("medication", medication.get),
     path("medication/create", medication.create),
     path("medication/delete", medication.delete),

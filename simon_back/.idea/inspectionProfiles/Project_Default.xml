@@ -1,0 +1,33 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyDefaultArgumentInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="7">
+            <item index="0" class="java.lang.String" itemvalue="mypy" />
+            <item index="1" class="java.lang.String" itemvalue="click" />
+            <item index="2" class="java.lang.String" itemvalue="httmock" />
+            <item index="3" class="java.lang.String" itemvalue="types-requests" />
+            <item index="4" class="java.lang.String" itemvalue="confluent-kafka" />
+            <item index="5" class="java.lang.String" itemvalue="black" />
+            <item index="6" class="java.lang.String" itemvalue="requests" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="transportation_requester.repositories.VehicleRepository.create" />
+          <option value="transportation_requester.repositories.VehicleRepository.get" />
+          <option value="transportation_requester.repositories.VehicleRepository.all" />
+          <option value="transportation_requester.repositories.VehicleRepository.update" />
+          <option value="transportation_requester.repositories.VehicleRepository.delete" />
+          <option value="product.infrastructure.service.KafkaEventPublisher.aws_secrets" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

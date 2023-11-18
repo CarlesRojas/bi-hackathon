@@ -1,5 +1,6 @@
 import ErrorMessage from '@/components/ErrorMessage';
 import Loading from '@/components/Loading';
+import Card, { Tag } from '@/components/patient/Card';
 import { usePatientMedication } from '@/server/medication';
 import { useUser } from '@/server/user';
 import Image from 'next/image';
@@ -24,7 +25,7 @@ export default function PatientHome() {
     const user = useUser(patientId);
     const patientMedication = usePatientMedication(patientId);
 
-    const container = (children: ReactNode) => <main className="w-full h-full flex flex-col">{children}</main>;
+    const container = (children: ReactNode) => <main className="w-full h-fit flex flex-col">{children}</main>;
 
     if (user.isLoading) return container(<Loading />);
     if (user.isError || !user.data) return container(<ErrorMessage />);
@@ -88,11 +89,42 @@ export default function PatientHome() {
                 </div>
             </section>
 
-            <section className="relative p-6 flex flex-col items-center gap-4">
-                <div className="flex flex-col w-full-">
+            <section className="relative p-6 flex flex-col items-center gap-2">
+                <div className="flex flex-col w-full">
                     <h3 className="text-xl font-semibold">{'Organiza tu dia'}</h3>
                     <p>{'Con cada acción que realices, tu planta crecerá contigo'}</p>
                 </div>
+
+                <Card
+                    image={'/image/medicacion.png'}
+                    tag={Tag.MED}
+                    title={'Toma de medicación'}
+                    subtitle={`${2}/${patientMedication.data?.length ?? 0}      ¡Vamos a cuidarnos!`}
+                    description={'Tienes pendiente registrar tu toma'}
+                    content={
+                        <div>
+                            <p>Hola</p>
+                        </div>
+                    }
+                />
+
+                <Card
+                    image={'/image/doctor.png'}
+                    tag={Tag.CITA}
+                    title={'Tiene una cita médica'}
+                    subtitle={'Hoy, 20 de Noviembre      16:30h'}
+                    description={'Dra. Anna Ruíz      Hospital Vall d’Hebron Barcelona'}
+                />
+
+                <Card image={'/image/know.png'} tag={Tag.EDU} title={'¿Cómo gestiono mis miedos?'} subtitle={'3 min'} />
+
+                <Card
+                    image={'/image/event.png'}
+                    tag={Tag.EVENT}
+                    title={'Caminata Solidaria'}
+                    subtitle={'Hoy, 20 de Noviembre      16:30h'}
+                    description={'ACFAME      Barceloneta'}
+                />
             </section>
         </>
     );

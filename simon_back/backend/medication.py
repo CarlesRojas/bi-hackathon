@@ -9,7 +9,7 @@ from backend.models import Medication
 
 @require_http_methods(["GET"])
 def get(request: HttpRequest, user_id: str) -> JsonResponse:
-    medications = Medication.objects.filter(Q(patient__id=user_id))
+    medications = Medication.objects.filter(Q(patient__id=user_id)).order_by("hour")
     return JsonResponse(list(map(serialize, medications)), safe=False)
 
 

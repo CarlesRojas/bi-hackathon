@@ -15,13 +15,12 @@ def get(request: HttpRequest, medication_id: str) -> JsonResponse:
 
 @require_http_methods(["POST"])
 def create(request: HttpRequest) -> JsonResponse:
-    MedicationHistory(medication_id=request.POST.get("medication_id"), taken=request.POST.get("taken")).save()
+    MedicationHistory(medication_id=request.POST.get("medication_id")).save()
     return JsonResponse({"status": "ok"})
 
 
 def serialize(medication_history: MedicationHistory) -> Dict[str, Any]:
     return {
         "id": medication_history.id,
-        "taken": medication_history.taken,
         "created_at": medication_history.created_at,
     }

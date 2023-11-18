@@ -31,7 +31,6 @@ class MedicationHistory(models.Model):
     medication = models.ForeignKey(
         Medication, on_delete=models.DO_NOTHING
     )
-    taken = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

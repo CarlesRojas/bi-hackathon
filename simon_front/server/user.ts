@@ -52,3 +52,21 @@ export const useUsers = () => {
 
     return { patients, doctors, data, ...rest };
 };
+
+export const getUser = async (id: string) => {
+    // await new Promise((resolve) => setTimeout(resolve, 2000));
+    // return mockUsers;
+
+    return mockUsers[0];
+    // if (!id) return undefined;
+
+    // const response = await axios.get(`https://bi-hackathon-back.vercel.app/api/user/${id}`);
+    // return UserSchema.parse(response.data) as User;
+};
+
+export const useUser = (id: string) => {
+    return useQuery({
+        queryKey: ['user', id],
+        queryFn: () => getUser(id)
+    });
+};

@@ -6,8 +6,6 @@ import { ReactNode } from 'react';
 const Layout = ({ children, patientId }: { children: ReactNode; patientId?: string }) => {
     const { pathname } = useRouter();
 
-    console.log(patientId);
-
     const NavItems = [
         {
             image: '/icon/home.png',

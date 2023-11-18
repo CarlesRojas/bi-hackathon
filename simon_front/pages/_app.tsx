@@ -12,8 +12,6 @@ export function App({ Component, pageProps }: AppProps) {
             })
     );
 
-    console.log(pageProps.patientId);
-
     return (
         <QueryClientProvider client={queryClient}>
             <Layout patientId={pageProps.patientId}>

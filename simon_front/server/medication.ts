@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { z } from 'zod';
 
@@ -7,12 +8,20 @@ const MedicationSchema = z.object({
     name: z.string(),
     hour: z.string()
 });
+const MedicationsSchema = z.array(MedicationSchema);
 export type Medication = z.infer<typeof MedicationSchema>;
 
 export const getMedicationForPatient = async (patientId: string) => {
+    if (!patientId) return undefined;
     const response = await axios.get(`https://bi-hackathon-back.vercel.app/api/medication/${patientId}`);
+    return MedicationsSchema.parse(response.data) as Medication[];
+};
 
-    return MedicationSchema.parse(response.data) as Medication;
+export const usePatientMedication = (patientId: string) => {
+    return useQuery({
+        queryKey: ['patientMedication', patientId],
+        queryFn: () => getMedicationForPatient(patientId)
+    });
 };
 
 interface CreateMedicationMutation {

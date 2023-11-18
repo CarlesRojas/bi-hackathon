@@ -1,5 +1,6 @@
 import ErrorMessage from '@/components/ErrorMessage';
 import Loading from '@/components/Loading';
+import { usePatientMedication } from '@/server/medication';
 import { useUser } from '@/server/user';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -21,6 +22,7 @@ export default function PatientHome() {
     const { query } = useRouter();
     const patientId = query.patientId as string;
     const user = useUser(patientId);
+    const patientMedication = usePatientMedication(patientId);
 
     const container = (children: ReactNode) => <main className="w-full h-full flex flex-col">{children}</main>;
 
@@ -87,8 +89,10 @@ export default function PatientHome() {
             </section>
 
             <section className="relative p-6 flex flex-col items-center gap-4">
-                <h3 className="text-xl w-full font-semibold">{'Organiza tu dia'}</h3>
-                <p className="w-full">{'Con cada acción que realices, tu planta crecerá contigo'}</p>
+                <div className="flex flex-col w-full-">
+                    <h3 className="text-xl font-semibold">{'Organiza tu dia'}</h3>
+                    <p>{'Con cada acción que realices, tu planta crecerá contigo'}</p>
+                </div>
             </section>
         </>
     );

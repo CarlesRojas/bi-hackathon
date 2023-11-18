@@ -8,8 +8,8 @@ from backend.models import MedicationHistory
 
 
 @require_http_methods(["GET"])
-def get(request: HttpRequest) -> JsonResponse:
-    medication_history = MedicationHistory.objects.filter(Q(medication_id=request.GET.get("medication_id")))
+def get(request: HttpRequest, medication_id: str) -> JsonResponse:
+    medication_history = MedicationHistory.objects.filter(Q(medication_id=medication_id))
     return JsonResponse(list(map(serialize, medication_history)), safe=False)
 
 

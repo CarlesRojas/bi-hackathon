@@ -14,7 +14,7 @@ export function App({ Component, pageProps }: AppProps) {
 
     return (
         <QueryClientProvider client={queryClient}>
-            <Layout>
+            <Layout patientId={pageProps.patientId}>
                 <Component {...pageProps} />
             </Layout>
         </QueryClientProvider>

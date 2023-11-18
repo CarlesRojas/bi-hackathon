@@ -3,6 +3,7 @@ import Loading from '@/components/Loading';
 import Card, { Tag } from '@/components/patient/Card';
 import { usePatientMedication } from '@/server/medication';
 import { useUser } from '@/server/user';
+import { GetServerSidePropsContext } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
@@ -17,8 +18,13 @@ const MOODS: Mood[] = [
     { src: '/image/emoji_1.png', text: 'Cansado' },
     { src: '/image/emoji_2.png', text: 'Asustado' },
     { src: '/image/emoji_3.png', text: 'Animado' },
-    { src: '/image/emoji_4.png', text: 'Animado' }
+    { src: '/image/emoji_4.png', text: 'Triste' }
 ];
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+    return { props: { patientId: context.params?.patientId } };
+}
+
 export default function PatientHome() {
     const { query } = useRouter();
     const patientId = query.patientId as string;
@@ -42,6 +48,7 @@ export default function PatientHome() {
                             src={'/image/bg.png'}
                             alt={'background'}
                             fill
+                            priority
                         />
                     </div>
                 </div>
@@ -85,6 +92,7 @@ export default function PatientHome() {
                         alt={'your plant'}
                         width={512}
                         height={512}
+                        priority
                     />
                 </div>
             </section>

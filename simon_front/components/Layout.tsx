@@ -42,7 +42,7 @@ const Layout = ({ children, patientId }: { children: ReactNode; patientId?: stri
                 <>
                     <div className="w-full h-20 min-h-[5rem]" />
 
-                    <nav className="absolute w-full h-20 left-0 bottom-0 p-2">
+                    <nav className="fixed w-full h-20 left-0 bottom-0 p-2">
                         <div className="relative w-full h-16 rounded-full bg-white border border-gray-200 grid grid-cols-5 shadow-xl px-4">
                             {NavItems.map(({ image, link, isOpen }, i) => (
                                 <Link

@@ -12,3 +12,4 @@ sqlparse==0.4.4
 typing_extensions==4.8.0
 urllib3==2.1.0
 yarg==0.1.9
+django-cors-headers==3.11.0

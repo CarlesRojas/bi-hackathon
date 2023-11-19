@@ -11,7 +11,7 @@ const BottomComponent = ({ title, subtitle, content, background }: Props) => {
     return (
         <div
             className={`relative overflow-hidden rounded-t-[2rem] w-full flex flex-col gap-2 p-8 ${
-                background ? 'bg-[#89dfcb]' : 'bg-[#39B2B2]'
+                background ? 'bg-[#94e7d4]' : 'bg-[#39B2B2]'
             }`}
             style={{
                 backgroundImage: background ? 'url(/image/bg_transp.png)' : ''

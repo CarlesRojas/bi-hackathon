@@ -25,4 +25,5 @@ def serialize(medication_history: MedicationHistory) -> Dict[str, Any]:
     return {
         "id": medication_history.id,
         "created_at": medication_history.created_at,
+        "medication_id": medication_history.medication_id,
     }

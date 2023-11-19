@@ -1,5 +1,6 @@
 import ErrorMessage from '@/components/ErrorMessage';
 import Loading from '@/components/Loading';
+import BottomComponent from '@/components/patient/BottomComponent';
 import Card, { Tag } from '@/components/patient/Card';
 import MedicationTracker from '@/components/patient/MedicationTracker';
 import { usePatientMedication } from '@/server/medication';
@@ -27,7 +28,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 }
 
 export default function PatientHome() {
-    const { query } = useRouter();
+    const { query, push } = useRouter();
     const patientId = query.patientId as string;
     const user = useUser(patientId);
     const patientMedication = usePatientMedication(patientId);
@@ -38,6 +39,9 @@ export default function PatientHome() {
     if (user.isError || !user.data) return container(<ErrorMessage />);
 
     const { data } = user;
+
+    const date = new Date();
+    const formattedDate = date.toLocaleDateString('es-ES', { day: 'numeric', month: 'long' });
 
     return container(
         <>
@@ -89,7 +93,7 @@ export default function PatientHome() {
                 <div className="w-full pointer-events-none select-none">
                     <Image
                         className="w-full h-full"
-                        src={'/image/plant_0.png'}
+                        src={'/image/main_plant.png'}
                         alt={'your plant'}
                         width={512}
                         height={512}
@@ -108,7 +112,7 @@ export default function PatientHome() {
                     image={'/image/medicacion.png'}
                     tag={Tag.MED}
                     title={'Toma de medicación'}
-                    subtitle={`${2}/${patientMedication.data?.length ?? 0}      ¡Vamos a cuidarnos!`}
+                    subtitle={`${1}/${patientMedication.data?.length ?? 0}      ¡Vamos a cuidarnos!`}
                     description={'Tienes pendiente registrar tu toma'}
                     content={<MedicationTracker patientId={patientId} />}
                 />
@@ -117,20 +121,30 @@ export default function PatientHome() {
                     image={'/image/doctor.png'}
                     tag={Tag.CITA}
                     title={'Tiene una cita médica'}
-                    subtitle={'Hoy, 20 de Noviembre      16:30h'}
-                    description={'Dra. Anna Ruíz      Hospital Vall d’Hebron Barcelona'}
+                    subtitle={`Hoy, ${formattedDate} a las 12:30`}
+                    description={"Dra. Anna Ruíz - Hospital Vall d'Hebron Barcelona"}
+                    onClick={() => push(`/patient/${patientId}/profile`)}
                 />
 
-                <Card image={'/image/know.png'} tag={Tag.EDU} title={'¿Cómo gestiono mis miedos?'} subtitle={'3 min'} />
+                <Card
+                    image={'/image/know.png'}
+                    tag={Tag.EDU}
+                    title={'¿Cómo gestiono mis miedos?'}
+                    subtitle={'3 min'}
+                    onClick={() => push(`/patient/${patientId}/learn`)}
+                />
 
                 <Card
                     image={'/image/event.png'}
                     tag={Tag.EVENT}
                     title={'Caminata Solidaria'}
-                    subtitle={'Hoy, 20 de Noviembre      16:30h'}
-                    description={'ACFAME      Barceloneta'}
+                    subtitle={`Hoy, ${formattedDate} a las 16:00`}
+                    description={'ACFAME - Barceloneta'}
+                    onClick={() => push(`/patient/${patientId}/community`)}
                 />
             </section>
+
+            <BottomComponent title={'Todo lo que estás mejorando'} subtitle="¿Has visto todo lo que has logrado?" />
         </>
     );
 }

@@ -4,7 +4,6 @@ import { z } from 'zod';
 
 const MedicationSchema = z.object({
     id: z.string(),
-    patientId: z.string(),
     name: z.string(),
     hour: z.string()
 });

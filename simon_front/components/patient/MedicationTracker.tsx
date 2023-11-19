@@ -20,7 +20,7 @@ const MedicationTracker = ({ patientId }: Props) => {
     const createMedication = useCreateMedicationHistory();
     const now = new Date();
 
-    const { register, handleSubmit, watch, setValue } = useForm<Inputs>({});
+    const { register, handleSubmit } = useForm<Inputs>({});
 
     const [selected, setSelected] = useState<string[]>([]);
 

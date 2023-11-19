@@ -4,6 +4,8 @@ import { useUser } from '@/server/user';
 import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
+import Image from "next/image";
+import Header from "@/components/patient/Header";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     return { props: { patientId: context.params?.patientId } };
@@ -21,5 +23,20 @@ export default function PatientProfile() {
 
     const { data } = user;
 
-    return container(<>Profile</>);
+    return container(
+        <>
+            <Header icon={
+                <Image
+                    src={'/icon/profile.png'}
+                    alt="icon"
+                    className="w-8 h-8 object-contain"
+                    width={128}
+                    height={128}
+                />
+            }
+                    title={'Mi perfil'}
+                    subtitle={'¡Consulta tus datos y logros!'}
+            />
+        </>
+    );
 }

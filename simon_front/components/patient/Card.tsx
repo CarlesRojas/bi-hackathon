@@ -6,7 +6,9 @@ export enum Tag {
     MED = 'Prioritario',
     CITA = 'Citas médicas',
     EDU = 'Educación',
-    EVENT = 'Evento'
+    EVENT = 'Evento',
+    ARTICLE = 'Artículo',
+    FORMATIONS = 'Formaciones'
 }
 
 interface Props {
@@ -19,18 +21,22 @@ interface Props {
     onClick?: () => void;
 }
 
-const TagBackgroundColor: Record<Tag, string> = {
+export const TagBackgroundColor: Record<Tag, string> = {
     [Tag.MED]: '#FFE769',
     [Tag.CITA]: '#BBECDA',
     [Tag.EDU]: '#BABCF7',
-    [Tag.EVENT]: '#FFBCC0'
+    [Tag.EVENT]: '#FFBCC0',
+    [Tag.ARTICLE]: '#FFBCC0',
+    [Tag.FORMATIONS]: '#C5D3F7'
 };
 
-const TagColor: Record<Tag, string> = {
+export const TagColor: Record<Tag, string> = {
     [Tag.MED]: '#998207',
     [Tag.CITA]: '#376E5A',
     [Tag.EDU]: '#676BD9',
-    [Tag.EVENT]: '#B3565B'
+    [Tag.EVENT]: '#B3565B',
+    [Tag.ARTICLE]: '#B3565B',
+    [Tag.FORMATIONS]: '#4A65AA'
 };
 
 const Card = ({ image, tag, title, subtitle, description, content, onClick }: Props) => {
@@ -45,7 +51,7 @@ const Card = ({ image, tag, title, subtitle, description, content, onClick }: Pr
             }}
             className="w-full h-fit grid grid-cols-[1fr_3fr_0.3fr] gap-2 p-2 rounded-lg bg-white"
         >
-            <Image src={image} alt={title} width={128} height={128} />
+            <Image className="rounded-md" src={image} alt={title} width={128} height={128} />
 
             <div className="w-full flex flex-col">
                 <p

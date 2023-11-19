@@ -8,6 +8,7 @@ import { GetServerSidePropsContext } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
+import SlimCard from "@/components/patient/SlimCard";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     return { props: { patientId: context.params?.patientId } };
@@ -480,7 +481,26 @@ export default function PatientLearn() {
                 <p className="px-6 text-sm text-[#444444]">Ver más</p>
             </div>
 
-            <BottomComponent title={'¿Tienes dudas sobre tu medicación?'} />
+            <BottomComponent
+                title={'¿Tienes dudas sobre tu medicación?'}
+                content={
+                <div className="flex flex-col gap-3">
+                    <SlimCard
+                        title={'¿Qué es la Duloxetina?'}
+                        description={'La duloxetina es un medicamento antidepresivo que también se utiliza para tratar trastornos de ansiedad y problemas de dolor crónico al modular los niveles de neurotransmisores en el cerebro, como la serotonina y la norepinefrina.'}
+                    />
+                    <SlimCard
+                        title={'¿En qué me ayuda la Duloxetina?'}
+                        description={'La duloxetina es un medicamento que ayuda a tratar la depresión, trastornos de ansiedad y problemas de dolor crónico al influir en los niveles de ciertos neurotransmisores en el cerebro, como la serotonina y la norepinefrina.'}
+                    />
+                    <SlimCard
+                        title={'¿Qué es el Lorazepam?'}
+                        description={'\n' +
+                            'El lorazepam es un medicamento perteneciente a la clase de las benzodiazepinas, utilizado principalmente para el tratamiento de la ansiedad y trastornos relacionados, así como para controlar crisis convulsivas y ayudar en la sedación antes de procedimientos médicos.'}
+                    />
+                </div>
+                }
+            />
         </>
     );
 }

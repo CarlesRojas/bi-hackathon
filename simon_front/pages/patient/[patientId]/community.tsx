@@ -3,7 +3,8 @@ import Loading from '@/components/Loading';
 import BottomComponent from '@/components/patient/BottomComponent';
 import Card, { Tag, TagBackgroundColor, TagColor } from '@/components/patient/Card';
 import Header from '@/components/patient/Header';
-import SquareCard from '@/components/patient/SquareCard';
+import SlimCard from '@/components/patient/SlimCard';
+import { default as SquareCard } from '@/components/patient/SquareCard';
 import { useUser } from '@/server/user';
 import { GetServerSidePropsContext } from 'next';
 import Image from 'next/image';
@@ -209,7 +210,7 @@ export default function PatientCommunity() {
                 <p className="w-full text-center px-6 text-lg opacity-90 text-white">Esto ha pasado en el último mes</p>
 
                 <div className="w-full shadow-[0px_0px_10.6px_0px_#C5FAED] rounded-[1.6rem] flex gap-2 bg-white py-3 px-6 items-center">
-                    <Image src={'/image/plant.png'} alt="icon" className="w-8 h-8" width={512} height={512} />
+                    <Image src={'/image/events.png'} alt="icon" className="w-8 h-8" width={512} height={512} />
                     <p className="text-4xl text-[#249F9F]">6</p>
                     <p className="text-sm text-[#249F9F]">eventos a los que has asistido</p>
                 </div>
@@ -240,7 +241,33 @@ export default function PatientCommunity() {
                 <SquareCard icon={'/icon/interest5.png'} title={'Club del manga'} />
                 <SquareCard icon={'/icon/interest6.png'} title={'Club de las plantas'} />
             </div>
-            <BottomComponent title={'¿Tienes dudas sobre tu medicación?'} />
+
+            <BottomComponent
+                title={'¿Tienes dudas sobre tu medicación?'}
+                content={
+                    <div className="flex flex-col gap-3">
+                        <SlimCard
+                            title={'¿Qué es la Duloxetina?'}
+                            description={
+                                'La duloxetina es un medicamento antidepresivo que también se utiliza para tratar trastornos de ansiedad y problemas de dolor crónico al modular los niveles de neurotransmisores en el cerebro, como la serotonina y la norepinefrina.'
+                            }
+                        />
+                        <SlimCard
+                            title={'¿En qué me ayuda la Duloxetina?'}
+                            description={
+                                'La duloxetina es un medicamento que ayuda a tratar la depresión, trastornos de ansiedad y problemas de dolor crónico al influir en los niveles de ciertos neurotransmisores en el cerebro, como la serotonina y la norepinefrina.'
+                            }
+                        />
+                        <SlimCard
+                            title={'¿Qué es el Lorazepam?'}
+                            description={
+                                '\n' +
+                                'El lorazepam es un medicamento perteneciente a la clase de las benzodiazepinas, utilizado principalmente para el tratamiento de la ansiedad y trastornos relacionados, así como para controlar crisis convulsivas y ayudar en la sedación antes de procedimientos médicos.'
+                            }
+                        />
+                    </div>
+                }
+            />
         </>
     );
 }

@@ -61,18 +61,27 @@ export default function PatientProfile() {
             />
 
             <section className="w-full p-4">
-                <div className="w-full flex gap-4 bg-white rounded-2xl shadow-lg p-8">
-                    <Image
-                        src={'/image/marc.png'}
-                        alt="profile image"
-                        className="w-16 h-16 object-cover rounded-full"
-                        width={512}
-                        height={512}
-                    ></Image>
+                <div className="w-full flex flex-col gap-4 bg-white rounded-2xl shadow-lg p-4">
+                    <div className="w-full flex gap-4">
 
-                    <div className="w-full flex flex-col">
-                        <p className="text-2xl font-semibold">{data.name}</p>
-                        <p className="text-base">15/08/96 - 27 años</p>
+                        <Image
+                            src={'/image/marc.png'}
+                            alt="profile image"
+                            className="w-16 h-16 object-cover rounded-full"
+                            width={512}
+                            height={512}
+                        ></Image>
+
+                        <div className="w-full flex flex-col">
+                            <p className="text-2xl font-semibold">{data.name}</p>
+                            <p className="text-base">15/08/96 - 27 años</p>
+                        </div>
+
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-2 text-center">
+                        <button className="bg-[#CAFAEF] w-full rounded-full px-6 py-3 text-sm">Llamar a Emergencias</button>
+                        <button className="bg-[#CAFAEF] w-full rounded-full px-6 py-3 text-sm">Llamar al teléfono de la esperanza</button>
                     </div>
                 </div>
             </section>

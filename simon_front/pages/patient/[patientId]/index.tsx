@@ -9,6 +9,7 @@ import { GetServerSidePropsContext } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
+import SlimCard from "@/components/patient/SlimCard";
 
 interface Mood {
     src: string;
@@ -144,7 +145,28 @@ export default function PatientHome() {
                 />
             </section>
 
-            <BottomComponent title={'Todo lo que estás mejorando'} subtitle="¿Has visto todo lo que has logrado?" />
+            <BottomComponent
+                title={'Todo lo que estás mejorando'}
+                content={
+                    <div className="grid grid-cols-3 gap-3">
+                        <div className="shadow-[0px_0px_10.6px_0px_#C5FAED] rounded-[1.6rem] gap-2 bg-white py-3 px-3 items-center">
+                            <Image src={'/image/article.png'} alt="icon" className="w-16 h-16" width={512} height={512} />
+                            <p className="text-4xl text-[#249F9F]">3</p>
+                            <p className="text-sm text-[#249F9F]"><b>Artículos</b> marcados como favoritos</p>
+                        </div>
+                        <div className="shadow-[0px_0px_10.6px_0px_#C5FAED] rounded-[1.6rem] gap-2 bg-white py-3 px-3 items-center">
+                            <Image src={'/image/plant.png'} alt="icon" className="w-16 h-16" width={512} height={512} />
+                            <p className="text-4xl text-[#249F9F]">14</p>
+                            <p className="text-sm text-[#249F9F]"><b>Días con tu medicación</b>  de forma continuada</p>
+                        </div>
+                        <div className="shadow-[0px_0px_10.6px_0px_#C5FAED] rounded-[1.6rem] gap-2 bg-white py-3 px-3 items-center">
+                            <Image src={'/image/events.png'} alt="icon" className="w-16 h-16" width={512} height={512} />
+                            <p className="text-4xl text-[#249F9F]">6</p>
+                            <p className="text-sm text-[#249F9F]"><b>Eventos</b> a los que has asistido en el último mes</p>
+                        </div>
+                    </div>
+                }
+            />
         </>
     );
 }

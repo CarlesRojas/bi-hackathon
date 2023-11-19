@@ -11,7 +11,7 @@ interface Props {
 const BottomComponent = ({ title, subtitle, content, background }: Props) => {
     return (
         <div
-            className={`relative overflow-hidden rounded-t-[2rem] w-full flex flex-col gap-2 p-8 ${
+            className={`relative overflow-hidden rounded-t-[2rem] w-full flex flex-col gap-4 p-8 ${
                 background ? 'bg-[#A6F9E5]' : 'bg-[#39B2B2]'
             }`}
         >

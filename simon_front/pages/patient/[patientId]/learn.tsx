@@ -1,5 +1,6 @@
 import ErrorMessage from '@/components/ErrorMessage';
 import Loading from '@/components/Loading';
+import BottomComponent from '@/components/patient/BottomComponent';
 import Card, { Tag, TagBackgroundColor, TagColor } from '@/components/patient/Card';
 import Header from '@/components/patient/Header';
 import { useUser } from '@/server/user';
@@ -473,9 +474,11 @@ export default function PatientLearn() {
                     }
                 />
             </section>
-            <div className="w-full flex flex-col items-center">
+            <div className="w-full flex flex-col items-center pb-4">
                 <p className="px-6 text-sm text-[#444444]">Ver más</p>
             </div>
+
+            <BottomComponent title={'¿Tienes dudas sobre tu medicación?'} />
         </>
     );
 }

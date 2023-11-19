@@ -1,5 +1,6 @@
 import ErrorMessage from '@/components/ErrorMessage';
 import Loading from '@/components/Loading';
+import BottomComponent from '@/components/patient/BottomComponent';
 import Header from '@/components/patient/Header';
 import { useUser } from '@/server/user';
 import { GetServerSidePropsContext } from 'next';
@@ -125,6 +126,8 @@ export default function PatientMedication() {
                     <button className="bg-[#CAFAEF] rounded-full px-6 py-3">Registrar síntoma</button>
                 </form>
             </div>
+
+            <BottomComponent title={'¿Tienes dudas sobre tu medicación?'} />
         </>
     );
 }

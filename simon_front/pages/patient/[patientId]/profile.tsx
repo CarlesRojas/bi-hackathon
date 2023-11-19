@@ -1,5 +1,6 @@
 import ErrorMessage from '@/components/ErrorMessage';
 import Loading from '@/components/Loading';
+import BottomComponent from '@/components/patient/BottomComponent';
 import Header from '@/components/patient/Header';
 import { useUser } from '@/server/user';
 import { GetServerSidePropsContext } from 'next';
@@ -85,6 +86,13 @@ export default function PatientProfile() {
                     </div>
                 </div>
             </section>
+
+            <BottomComponent
+                title={'Mi jardín'}
+                subtitle={'Mientras cultivas tus plantas, cuidas tu mente'}
+                content={undefined}
+                background
+            />
         </>
     );
 }

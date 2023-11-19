@@ -1,5 +1,6 @@
 import ErrorMessage from '@/components/ErrorMessage';
 import Loading from '@/components/Loading';
+import BottomComponent from '@/components/patient/BottomComponent';
 import Card, { Tag } from '@/components/patient/Card';
 import MedicationTracker from '@/components/patient/MedicationTracker';
 import { usePatientMedication } from '@/server/medication';
@@ -142,6 +143,8 @@ export default function PatientHome() {
                     onClick={() => push(`/patient/${patientId}/community`)}
                 />
             </section>
+
+            <BottomComponent title={'Todo lo que estás mejorando'} subtitle="¿Has visto todo lo que has logrado?" />
         </>
     );
 }

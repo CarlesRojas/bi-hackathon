@@ -62,6 +62,7 @@ export default function PatientLearn() {
             <section className="relative p-6 flex flex-col items-center gap-2">
                 <Card
                     image={'/image/formation1.png'}
+                    showLike
                     tag={Tag.ARTICLE}
                     title={'La primera visita al psicólogo: Preguntas frecuentes'}
                     subtitle={'Alberto Soler - 5 min'}
@@ -78,6 +79,7 @@ export default function PatientLearn() {
                 />
                 <Card
                     image={'/image/formation2.png'}
+                    showLike
                     tag={Tag.ARTICLE}
                     title={'No estoy bien: ¿Qué puedo hacer?'}
                     subtitle={'Henka Centros Educativos - 5 min'}
@@ -94,6 +96,7 @@ export default function PatientLearn() {
                 />
                 <Card
                     image={'/image/formation3.png'}
+                    showLike
                     tag={Tag.ARTICLE}
                     title={'¿Sabes que preguntar en tu consulta al psicólogo?'}
                     subtitle={'Georgina Méndez - 5 min'}
@@ -110,6 +113,7 @@ export default function PatientLearn() {
                 />
                 <Card
                     image={'/image/formation4.png'}
+                    showLike
                     tag={Tag.ARTICLE}
                     title={'El papel de la familia y del entorno de las personas'}
                     subtitle={'ACFAME - 5 min'}
@@ -142,6 +146,7 @@ export default function PatientLearn() {
             <section className="relative p-6 flex flex-col items-center gap-2">
                 <Card
                     image={'/image/formation5.png'}
+                    showLike
                     tag={Tag.ARTICLE}
                     title={'La recuperación desde la mirada de sus protagonistas'}
                     subtitle={'Marta Tena - 5 min'}
@@ -158,6 +163,7 @@ export default function PatientLearn() {
                 />
                 <Card
                     image={'/image/formation6.png'}
+                    showLike
                     tag={Tag.FORMATIONS}
                     title={'¿Tenemos buena salud mental?'}
                     subtitle={'Enrique López - 5 min'}
@@ -181,6 +187,8 @@ export default function PatientLearn() {
             <section className="relative p-6 flex flex-col items-center gap-2">
                 <Card
                     image={'/image/formation7.png'}
+                    showLike
+                    isLike
                     tag={Tag.ARTICLE}
                     title={'7 consejos para gestionar la ansiedad'}
                     subtitle={'Marta Tena - 5 min'}
@@ -197,6 +205,8 @@ export default function PatientLearn() {
                 />
                 <Card
                     image={'/image/formation8.png'}
+                    showLike
+                    isLike
                     tag={Tag.FORMATIONS}
                     title={'¿Cómo gestiono mis miedos?'}
                     subtitle={'Francisco Moruna - 5 min'}

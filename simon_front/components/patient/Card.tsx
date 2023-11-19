@@ -14,6 +14,8 @@ export enum Tag {
 interface Props {
     image: string;
     tag: Tag;
+    showLike?: boolean;
+    isLike?: boolean;
     title: string;
     subtitle: string;
     description?: string;
@@ -39,8 +41,9 @@ export const TagColor: Record<Tag, string> = {
     [Tag.FORMATIONS]: '#4A65AA'
 };
 
-const Card = ({ image, tag, title, subtitle, description, content, onClick }: Props) => {
+const Card = ({ image, tag, showLike, isLike, title, subtitle, description, content, onClick }: Props) => {
     const [open, setOpen] = useState(false);
+    const [liked, setLiked] = useState(isLike);
 
     return (
         <div className="w-full h-fit flex flex-col gap-2 rounded-lg bg-white">
@@ -51,16 +54,30 @@ const Card = ({ image, tag, title, subtitle, description, content, onClick }: Pr
                     setOpen((prev) => !prev);
                 }}
                 className="w-full h-fit grid grid-cols-[1fr_3fr_0.3fr] gap-2 p-2 rounded-lg bg-white"
-        >
-            <Image className="rounded-md" src={image} alt={title} width={128} height={128} />
+            >
+                <Image className="rounded-md" src={image} alt={title} width={128} height={128} />
 
                 <div className="w-full flex flex-col">
-                    <p
-                        className="text-left text-xs font-semibold px-2 py-1 rounded-full w-fit"
-                        style={{ color: TagColor[tag], backgroundColor: TagBackgroundColor[tag] }}
-                    >
-                        {tag}
-                    </p>
+                    <div className="w-full flex justify-between">
+                        <p
+                            className="text-left text-xs font-semibold px-2 py-1 rounded-full w-fit"
+                            style={{ color: TagColor[tag], backgroundColor: TagBackgroundColor[tag] }}
+                        >
+                            {tag}
+                        </p>
+                        {showLike ? <button onClick={(e)=>{
+                            e.stopPropagation()
+                            setLiked(prevState => !prevState)
+                        }}>
+                            <Image
+                                src={liked ? '/icon/like2.png' : '/icon/like.png'}
+                                alt="icon"
+                                className="w-4 h-4 object-contain "
+                                width={128}
+                                height={128}
+                            />
+                        </button> : null}
+                    </div>
                     <h3 className="text-left text-md font-medium">{title}</h3>
                     <p className="text-left text-xs ">{subtitle}</p>
                     <p className="text-left text-xs opacity-50">{description}</p>

@@ -4,7 +4,7 @@ import BottomComponent from '@/components/patient/BottomComponent';
 import Card, { Tag } from '@/components/patient/Card';
 import MedicationTracker from '@/components/patient/MedicationTracker';
 import { usePatientMedication } from '@/server/medication';
-import { usePatientMedicationHistory } from '@/server/medicationHistory';
+import { useTodayMedication } from '@/server/medicationHistory';
 import { useUser } from '@/server/user';
 import { GetServerSidePropsContext } from 'next';
 import Image from 'next/image';
@@ -35,7 +35,7 @@ export default function PatientHome() {
     const patientId = query.patientId as string;
     const user = useUser(patientId);
     const patientMedication = usePatientMedication(patientId);
-    const patientMedicationHistory = usePatientMedicationHistory(patientMedication?.data?.map(({ id }) => id));
+    const todayMedication = useTodayMedication(patientId);
 
     const container = (children: ReactNode) => <main className="w-full h-fit flex flex-col">{children}</main>;
 
@@ -47,8 +47,7 @@ export default function PatientHome() {
     const date = new Date();
     const formattedDate = date.toLocaleDateString('es-ES', { day: 'numeric', month: 'long' });
 
-    const medicationTaken =
-        patientMedicationHistory.todayMedicationHistory?.filter((history) => history.length > 0).length ?? 0;
+    const medicationTaken = todayMedication.data?.length ?? 0;
 
     const currentPlant =
         medicationTaken >= 0 && medicationTaken < plantStages.length

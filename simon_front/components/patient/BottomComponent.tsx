@@ -17,7 +17,7 @@ const BottomComponent = ({ title, subtitle, content, background }: Props) => {
         >
             {background && (
                 <Image
-                    className="w-full h-full opacity-20 object-cover"
+                    className="pointer-events-none select-none absolute w-full h-full opacity-20 object-cover"
                     src={'/image/bg.png'}
                     alt={'background'}
                     fill
@@ -32,10 +32,9 @@ const BottomComponent = ({ title, subtitle, content, background }: Props) => {
             {subtitle && (
                 <h6 className={`opacity-90 w-full text-center ${background ? '' : 'text-white'}`}>{subtitle}</h6>
             )}
+            {content ?? null}
 
             <div className="w-full h-20 min-h-[5rem]" />
-
-            {content ?? null}
         </div>
     );
 };

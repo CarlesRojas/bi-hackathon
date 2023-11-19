@@ -1,13 +1,13 @@
 import ErrorMessage from '@/components/ErrorMessage';
 import Loading from '@/components/Loading';
 import BottomComponent from '@/components/patient/BottomComponent';
+import Card, { Tag, TagBackgroundColor, TagColor } from '@/components/patient/Card';
 import Header from '@/components/patient/Header';
 import { useUser } from '@/server/user';
 import { GetServerSidePropsContext } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
-import Card, {Tag, TagBackgroundColor, TagColor} from "@/components/patient/Card";
 import SquareCard from "@/components/patient/SquareCard";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
@@ -46,17 +46,28 @@ export default function PatientCommunity() {
                     image={'/image/event.png'}
                     tag={Tag.EVENT}
                     title={'Caminata Solidaria'}
+                    isOpen
                     subtitle={'ACFAME - Hoy, 19 de Noviembre - Barceloneta - 19:30h'}
                     content={
                         <div className="relative flex flex-col gap-2 w-full">
                             <p>Andar y moverse llena de vida, y si estos pasos son solidarios, todavía más. </p>
-                            <p>En Barcelona nos comprometemos con las grandes causas y el próximo 19 de noviembre saldremos a la calle para hacer kilómetros para recaudar fondos para la Asociación Catalana de Familiares y Enfermos de Esquizofrenia. Lo haremos con una caminata tradicional que este año cambia de formato: más que nunca la participación se centra en la voluntad de ayudar. </p>
-                            <a className="text-[#262EEF]" target="_blank" href="https://acfames.org/">Más detalles</a>
+                            <p>
+                                En Barcelona nos comprometemos con las grandes causas y el próximo 19 de noviembre
+                                saldremos a la calle para hacer kilómetros para recaudar fondos para la Asociación
+                                Catalana de Familiares y Enfermos de Esquizofrenia. Lo haremos con una caminata
+                                tradicional que este año cambia de formato: más que nunca la participación se centra en
+                                la voluntad de ayudar.{' '}
+                            </p>
+                            <a className="text-[#262EEF]" target="_blank" href="https://acfames.org/">
+                                Más detalles
+                            </a>
                         </div>
                     }
                 />
             </section>
-            <p className="px-6 mt-6 text-lg text-center text-[#39B2B2]">¡Sal a tomar el aire, tu planta te acompañará!</p>
+            <p className="px-6 mt-6 text-lg text-center text-[#39B2B2]">
+                ¡Sal a tomar el aire, tu planta te acompañará!
+            </p>
             <Image
                 src={'/image/main_plant.png'}
                 alt="icon"
@@ -94,8 +105,19 @@ export default function PatientCommunity() {
                     subtitle={'ACFAME - Online - 24/11/23 - 18:00h'}
                     content={
                         <>
-                            <p>Los eventos sociales desempeñan un papel fundamental en la terapia mental al proporcionar una plataforma en la que las personas pueden conectarse, compartir experiencias y sentirse parte de una comunidad. La interacción social ofrece diversos beneficios terapéuticos que contribuyen al bienestar mental.</p>
-                            <p>La diversidad de experiencias en eventos sociales también puede ofrecer nuevas perspectivas y enfoques para abordar desafíos emocionales. El intercambio de ideas y la exposición a diferentes formas de afrontar situaciones pueden enriquecer el repertorio emocional de una persona y brindarle herramientas adicionales para manejar el estrés y la ansiedad.</p>
+                            <p>
+                                Los eventos sociales desempeñan un papel fundamental en la terapia mental al
+                                proporcionar una plataforma en la que las personas pueden conectarse, compartir
+                                experiencias y sentirse parte de una comunidad. La interacción social ofrece diversos
+                                beneficios terapéuticos que contribuyen al bienestar mental.
+                            </p>
+                            <p>
+                                La diversidad de experiencias en eventos sociales también puede ofrecer nuevas
+                                perspectivas y enfoques para abordar desafíos emocionales. El intercambio de ideas y la
+                                exposición a diferentes formas de afrontar situaciones pueden enriquecer el repertorio
+                                emocional de una persona y brindarle herramientas adicionales para manejar el estrés y
+                                la ansiedad.
+                            </p>
                             <div className="text-center p-4">
                                 <button className="bg-[#CAFAEF] rounded-full px-6 py-3">Inscribirme</button>
                             </div>
@@ -109,8 +131,19 @@ export default function PatientCommunity() {
                     subtitle={'Centro Cultural Can Tauler - Presencial - 25/11/23 - 17:30h'}
                     content={
                         <>
-                            <p>Los eventos sociales desempeñan un papel fundamental en la terapia mental al proporcionar una plataforma en la que las personas pueden conectarse, compartir experiencias y sentirse parte de una comunidad. La interacción social ofrece diversos beneficios terapéuticos que contribuyen al bienestar mental.</p>
-                            <p>La diversidad de experiencias en eventos sociales también puede ofrecer nuevas perspectivas y enfoques para abordar desafíos emocionales. El intercambio de ideas y la exposición a diferentes formas de afrontar situaciones pueden enriquecer el repertorio emocional de una persona y brindarle herramientas adicionales para manejar el estrés y la ansiedad.</p>
+                            <p>
+                                Los eventos sociales desempeñan un papel fundamental en la terapia mental al
+                                proporcionar una plataforma en la que las personas pueden conectarse, compartir
+                                experiencias y sentirse parte de una comunidad. La interacción social ofrece diversos
+                                beneficios terapéuticos que contribuyen al bienestar mental.
+                            </p>
+                            <p>
+                                La diversidad de experiencias en eventos sociales también puede ofrecer nuevas
+                                perspectivas y enfoques para abordar desafíos emocionales. El intercambio de ideas y la
+                                exposición a diferentes formas de afrontar situaciones pueden enriquecer el repertorio
+                                emocional de una persona y brindarle herramientas adicionales para manejar el estrés y
+                                la ansiedad.
+                            </p>
                             <div className="text-center p-4">
                                 <button className="bg-[#CAFAEF] rounded-full px-6 py-3">Inscribirme</button>
                             </div>
@@ -124,8 +157,19 @@ export default function PatientCommunity() {
                     subtitle={'Asociación Salud Mental Cataluña  - Presencial - 12/12/23 - 9:00h'}
                     content={
                         <>
-                            <p>Los eventos sociales desempeñan un papel fundamental en la terapia mental al proporcionar una plataforma en la que las personas pueden conectarse, compartir experiencias y sentirse parte de una comunidad. La interacción social ofrece diversos beneficios terapéuticos que contribuyen al bienestar mental.</p>
-                            <p>La diversidad de experiencias en eventos sociales también puede ofrecer nuevas perspectivas y enfoques para abordar desafíos emocionales. El intercambio de ideas y la exposición a diferentes formas de afrontar situaciones pueden enriquecer el repertorio emocional de una persona y brindarle herramientas adicionales para manejar el estrés y la ansiedad.</p>
+                            <p>
+                                Los eventos sociales desempeñan un papel fundamental en la terapia mental al
+                                proporcionar una plataforma en la que las personas pueden conectarse, compartir
+                                experiencias y sentirse parte de una comunidad. La interacción social ofrece diversos
+                                beneficios terapéuticos que contribuyen al bienestar mental.
+                            </p>
+                            <p>
+                                La diversidad de experiencias en eventos sociales también puede ofrecer nuevas
+                                perspectivas y enfoques para abordar desafíos emocionales. El intercambio de ideas y la
+                                exposición a diferentes formas de afrontar situaciones pueden enriquecer el repertorio
+                                emocional de una persona y brindarle herramientas adicionales para manejar el estrés y
+                                la ansiedad.
+                            </p>
                             <div className="text-center p-4">
                                 <button className="bg-[#CAFAEF] rounded-full px-6 py-3">Inscribirme</button>
                             </div>
@@ -139,8 +183,19 @@ export default function PatientCommunity() {
                     subtitle={'Dra. Elena Castillo - Online - 15/12/23 - 19:30h'}
                     content={
                         <>
-                            <p>Los eventos sociales desempeñan un papel fundamental en la terapia mental al proporcionar una plataforma en la que las personas pueden conectarse, compartir experiencias y sentirse parte de una comunidad. La interacción social ofrece diversos beneficios terapéuticos que contribuyen al bienestar mental.</p>
-                            <p>La diversidad de experiencias en eventos sociales también puede ofrecer nuevas perspectivas y enfoques para abordar desafíos emocionales. El intercambio de ideas y la exposición a diferentes formas de afrontar situaciones pueden enriquecer el repertorio emocional de una persona y brindarle herramientas adicionales para manejar el estrés y la ansiedad.</p>
+                            <p>
+                                Los eventos sociales desempeñan un papel fundamental en la terapia mental al
+                                proporcionar una plataforma en la que las personas pueden conectarse, compartir
+                                experiencias y sentirse parte de una comunidad. La interacción social ofrece diversos
+                                beneficios terapéuticos que contribuyen al bienestar mental.
+                            </p>
+                            <p>
+                                La diversidad de experiencias en eventos sociales también puede ofrecer nuevas
+                                perspectivas y enfoques para abordar desafíos emocionales. El intercambio de ideas y la
+                                exposición a diferentes formas de afrontar situaciones pueden enriquecer el repertorio
+                                emocional de una persona y brindarle herramientas adicionales para manejar el estrés y
+                                la ansiedad.
+                            </p>
                             <div className="text-center p-4">
                                 <button className="bg-[#CAFAEF] rounded-full px-6 py-3">Inscribirme</button>
                             </div>

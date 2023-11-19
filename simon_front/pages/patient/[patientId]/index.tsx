@@ -127,10 +127,10 @@ export default function PatientHome() {
                 />
 
                 <Card
-                    image={'/image/know.png'}
-                    tag={Tag.EDU}
-                    title={'¿Cómo gestiono mis miedos?'}
-                    subtitle={'3 min'}
+                    image={'/image/formation1.png'}
+                    tag={Tag.ARTICLE}
+                    title={'La primera visita al psicólogo: Preguntas frecuentes'}
+                    subtitle={'Alberto Soler - 5 min'}
                     onClick={() => push(`/patient/${patientId}/learn`)}
                 />
 

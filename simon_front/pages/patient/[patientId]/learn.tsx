@@ -258,7 +258,9 @@ export default function PatientLearn() {
             <div className="w-full flex flex-col items-center">
                 <p className="px-6 text-sm text-[#444444]">Ver más</p>
             </div>
-            <p className="px-6 mt-6 text-lg text-[#39B2B2]">¡Tu planta está aprendiendo y creciendo contigo!</p>
+            <p className="px-6 mt-6 text-lg text-[#39B2B2] text-center">
+                ¡Tu planta está aprendiendo y creciendo contigo!
+            </p>
             <Image
                 src={'/image/main_plant.png'}
                 alt="icon"

@@ -29,7 +29,7 @@ export const TagBackgroundColor: Record<Tag, string> = {
     [Tag.MED]: '#FFE769',
     [Tag.CITA]: '#BBECDA',
     [Tag.EDU]: '#BABCF7',
-    [Tag.EVENT]: '#FFBCC0',
+    [Tag.EVENT]: '#C5D3F7',
     [Tag.ARTICLE]: '#FFBCC0',
     [Tag.FORMATIONS]: '#C5D3F7',
     [Tag.TALK]: '#C4C6FF',
@@ -40,7 +40,7 @@ export const TagColor: Record<Tag, string> = {
     [Tag.MED]: '#998207',
     [Tag.CITA]: '#376E5A',
     [Tag.EDU]: '#676BD9',
-    [Tag.EVENT]: '#B3565B',
+    [Tag.EVENT]: '#4A65AA',
     [Tag.ARTICLE]: '#B3565B',
     [Tag.FORMATIONS]: '#4A65AA',
     [Tag.TALK]: '#595CD4',
@@ -71,18 +71,22 @@ const Card = ({ image, tag, showLike, isLike, title, subtitle, description, cont
                         >
                             {tag}
                         </p>
-                        {showLike ? <button onClick={(e)=>{
-                            e.stopPropagation()
-                            setLiked(prevState => !prevState)
-                        }}>
-                            <Image
-                                src={liked ? '/icon/like2.png' : '/icon/like.png'}
-                                alt="icon"
-                                className="w-4 h-4 object-contain "
-                                width={128}
-                                height={128}
-                            />
-                        </button> : null}
+                        {showLike ? (
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setLiked((prevState) => !prevState);
+                                }}
+                            >
+                                <Image
+                                    src={liked ? '/icon/like2.png' : '/icon/like.png'}
+                                    alt="icon"
+                                    className="w-4 h-4 object-contain "
+                                    width={128}
+                                    height={128}
+                                />
+                            </button>
+                        ) : null}
                     </div>
                     <h3 className="text-left text-md font-medium">{title}</h3>
                     <p className="text-left text-xs ">{subtitle}</p>

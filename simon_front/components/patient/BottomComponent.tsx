@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { ReactNode } from 'react';
 
 interface Props {
@@ -12,10 +11,13 @@ const BottomComponent = ({ title, subtitle, content, background }: Props) => {
     return (
         <div
             className={`relative overflow-hidden rounded-t-[2rem] w-full flex flex-col gap-2 p-8 ${
-                background ? 'bg-[#A6F9E5]' : 'bg-[#39B2B2]'
+                background ? 'bg-[#89dfcb]' : 'bg-[#39B2B2]'
             }`}
+            style={{
+                backgroundImage: background ? 'url(/image/bg_transp.png)' : ''
+            }}
         >
-            {background && (
+            {/* {background && (
                 <Image
                     className="pointer-events-none select-none absolute w-full h-full opacity-20 object-cover"
                     src={'/image/bg.png'}
@@ -23,7 +25,7 @@ const BottomComponent = ({ title, subtitle, content, background }: Props) => {
                     fill
                     priority
                 />
-            )}
+            )} */}
 
             <h2 className={`text-2xl opacity-90 w-full text-center font-semibold ${background ? '' : 'text-white'}`}>
                 {title}

@@ -95,8 +95,8 @@ export default function PatientProfile() {
                     <div className="relative w-full grid grid-cols-7 gap-2">
                         {['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do'].map((day) => (
                             <div
-                                className={`flex w-full aspect-square items-center justify-center rounded-full border bg-white bg-opacity-40 border-[#6AD2B9] ${
-                                    day === 'Do' ? 'bg-[#6AD2B9]' : ''
+                                className={`flex w-full aspect-square items-center justify-center rounded-full border bg-opacity-40 border-[#6AD2B9] ${
+                                    day === 'Do' ? 'bg-[#6AD2B9]' : 'bg-white'
                                 }`}
                                 key={day}
                             >

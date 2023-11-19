@@ -11,7 +11,7 @@ const MedicationHistoryArraySchema = z.array(MedicationHistorySchema);
 export type MedicationHistory = z.infer<typeof MedicationHistorySchema>;
 
 export const getMedicationHistoryForPatient = async (medicationIds?: string[]) => {
-    if (!medicationIds) return undefined;
+    if (!medicationIds) return null;
     const response = await Promise.all(
         medicationIds.map((medicationId) =>
             axios.get(`https://bi-hackathon-back.vercel.app/api/medication-history/${medicationId}`)

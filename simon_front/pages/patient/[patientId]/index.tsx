@@ -4,6 +4,7 @@ import BottomComponent from '@/components/patient/BottomComponent';
 import Card, { Tag } from '@/components/patient/Card';
 import MedicationTracker from '@/components/patient/MedicationTracker';
 import { usePatientMedication } from '@/server/medication';
+import { usePatientMedicationHistory } from '@/server/medicationHistory';
 import { useUser } from '@/server/user';
 import { GetServerSidePropsContext } from 'next';
 import Image from 'next/image';
@@ -27,11 +28,14 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     return { props: { patientId: context.params?.patientId } };
 }
 
+const plantStages = ['/image/main_plant_0.png', '/image/main_plant_1.png', '/image/main_plant.png'];
+
 export default function PatientHome() {
     const { query, push } = useRouter();
     const patientId = query.patientId as string;
     const user = useUser(patientId);
     const patientMedication = usePatientMedication(patientId);
+    const patientMedicationHistory = usePatientMedicationHistory(patientMedication?.data?.map(({ id }) => id));
 
     const container = (children: ReactNode) => <main className="w-full h-fit flex flex-col">{children}</main>;
 
@@ -42,6 +46,14 @@ export default function PatientHome() {
 
     const date = new Date();
     const formattedDate = date.toLocaleDateString('es-ES', { day: 'numeric', month: 'long' });
+
+    const medicationTaken =
+        patientMedicationHistory.todayMedicationHistory?.filter((history) => history.length > 0).length ?? 0;
+
+    const currentPlant =
+        medicationTaken >= 0 && medicationTaken < plantStages.length
+            ? plantStages[medicationTaken]
+            : plantStages[plantStages.length - 1];
 
     return container(
         <>
@@ -92,9 +104,9 @@ export default function PatientHome() {
 
                 <div className="w-full pointer-events-none select-none">
                     <Image
-                        className="w-full h-full"
-                        src={'/image/main_plant.png'}
-                        alt={'your plant'}
+                        src={currentPlant}
+                        alt="icon"
+                        className="w-full px-10 object-contain"
                         width={512}
                         height={512}
                         priority
@@ -112,7 +124,7 @@ export default function PatientHome() {
                     image={'/image/medicacion.png'}
                     tag={Tag.MED}
                     title={'Toma de medicación'}
-                    subtitle={`${1}/${patientMedication.data?.length ?? 0}      ¡Vamos a cuidarnos!`}
+                    subtitle={`${medicationTaken}/${patientMedication.data?.length ?? 0}      ¡Vamos a cuidarnos!`}
                     description={'Tienes pendiente registrar tu toma'}
                     content={<MedicationTracker patientId={patientId} />}
                 />

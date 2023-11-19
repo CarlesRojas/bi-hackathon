@@ -477,7 +477,7 @@ export default function PatientLearn() {
                     }
                 />
             </section>
-            <div className="w-full flex flex-col items-center pb-4">
+            <div className="w-full flex flex-col items-center mb-6">
                 <p className="px-6 text-sm text-[#444444]">Ver más</p>
             </div>
 

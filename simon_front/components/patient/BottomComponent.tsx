@@ -12,12 +12,12 @@ const BottomComponent = ({ title, subtitle, content, background }: Props) => {
     return (
         <div
             className={`relative overflow-hidden rounded-t-[2rem] w-full flex flex-col gap-2 p-8 ${
-                background ? 'bg-[#A6F9E5]' : 'bg-[#39B2B2]'
+                background ? 'bg-[red]' : 'bg-[#39B2B2]'
             }`}
         >
             {background && (
                 <Image
-                    className="w-full h-full opacity-20 object-cover"
+                    className="pointer-events-none select-none absolute w-full h-full opacity-20 object-cover"
                     src={'/image/bg.png'}
                     alt={'background'}
                     fill
@@ -25,17 +25,20 @@ const BottomComponent = ({ title, subtitle, content, background }: Props) => {
                 />
             )}
 
-            <h2 className={`text-2xl opacity-90 w-full text-center font-semibold ${background ? '' : 'text-white'}`}>
+            <h2
+                className={`z-10 text-2xl opacity-90 w-full text-center font-semibold ${
+                    background ? '' : 'text-white'
+                }`}
+            >
                 {title}
             </h2>
 
             {subtitle && (
-                <h6 className={`opacity-90 w-full text-center ${background ? '' : 'text-white'}`}>{subtitle}</h6>
+                <h6 className={`z-10 opacity-90 w-full text-center ${background ? '' : 'text-white'}`}>{subtitle}</h6>
             )}
-
-            <div className="w-full h-20 min-h-[5rem]" />
-
             {content ?? null}
+
+            <div className="z-10 w-full h-20 min-h-[5rem]" />
         </div>
     );
 };

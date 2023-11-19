@@ -12,6 +12,26 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     return { props: { patientId: context.params?.patientId } };
 }
 
+interface Month {
+    title: string;
+    plants: string[];
+}
+
+const months: Month[] = [
+    {
+        title: 'Noviembre',
+        plants: ['/image/plant/nov_1.png', '/image/plant/nov_2.png', '/image/plant/nov_3.png', '/image/plant/nov_4.png']
+    },
+    {
+        title: 'Octubre',
+        plants: ['/image/plant/oct_1.png', '/image/plant/oct_2.png', '/image/plant/oct_3.png', '/image/plant/oct_4.png']
+    },
+    {
+        title: 'Septiembre',
+        plants: ['/image/plant/sep_1.png', '/image/plant/sep_2.png', '/image/plant/sep_3.png', '/image/plant/sep_4.png']
+    }
+];
+
 export default function PatientProfile() {
     const { query } = useRouter();
     const patientId = query.patientId as string;
@@ -90,7 +110,33 @@ export default function PatientProfile() {
             <BottomComponent
                 title={'Mi jardín'}
                 subtitle={'Mientras cultivas tus plantas, cuidas tu mente'}
-                content={undefined}
+                content={
+                    <section className="w-full flex flex-col gap-2">
+                        {months.map(({ plants, title }) => (
+                            <div
+                                className="w-full bg-white bg-opacity-80 rounded-2xl flex flex-col gap-2 p-4"
+                                key={title}
+                            >
+                                <p className="w-full text-base opacity-90 text-black col-span-full">{title}</p>
+
+                                <div className="w-full grid grid-cols-4">
+                                    {plants.map((plant, i) => (
+                                        <Image
+                                            className={`w-full h-full object-contain ${
+                                                title === 'Noviembre' && i === 3 ? 'opacity-30' : ''
+                                            }`}
+                                            key={`plant_${i}`}
+                                            src={plant}
+                                            alt={'plant'}
+                                            width={512}
+                                            height={512}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </section>
+                }
                 background
             />
         </>

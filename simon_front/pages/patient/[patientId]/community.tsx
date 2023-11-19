@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
 import Card, {Tag, TagBackgroundColor, TagColor} from "@/components/patient/Card";
+import SquareCard from "@/components/patient/SquareCard";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     return { props: { patientId: context.params?.patientId } };
@@ -57,7 +58,7 @@ export default function PatientCommunity() {
             </section>
             <p className="px-6 mt-6 text-lg text-center text-[#39B2B2]">¡Sal a tomar el aire, tu planta te acompañará!</p>
             <Image
-                src={'/image/plant_0.png'}
+                src={'/image/main_plant.png'}
                 alt="icon"
                 className="w-full p-8 object-contain"
                 width={512}
@@ -147,8 +148,41 @@ export default function PatientCommunity() {
                     }
                 />
             </section>
-            <div className="w-full flex flex-col items-center">
+            <div className="w-full flex flex-col items-center mb-6">
                 <p className="px-6 text-sm text-[#444444]">Ver más</p>
+            </div>
+            <section className="w-full bg-[#39B2B2] px-4 py-8 flex flex-col gap-4">
+                <p className="w-full text-center px-6 text-lg opacity-90 text-white">Esto ha pasado en el último mes</p>
+
+                <div className="w-full shadow-[0px_0px_10.6px_0px_#C5FAED] rounded-[1.6rem] flex gap-2 bg-white py-3 px-6 items-center">
+                    <Image src={'/image/plant.png'} alt="icon" className="w-8 h-8" width={512} height={512} />
+                    <p className="text-4xl text-[#249F9F]">6</p>
+                    <p className="text-sm text-[#249F9F]">eventos a los que has asistido</p>
+                </div>
+            </section>
+            <p className="px-6 mt-6 text-xl font-bold text-[#444]">Conociendo mi comunidad</p>
+            <p className="px-6 mt-1 text-sm text-[#444]">Encuentra las personas y entidades que hacen posible estos espacios de encuentro</p>
+            <p className="px-6 mt-6 text-md text-[#444]">Asociaciones</p>
+            <div className="relative w-full grid grid-cols-3 px-16 py-4 gap-3">
+                <SquareCard icon={'/image/association1.png'} title={'ACFAME'} />
+                <SquareCard icon={'/image/association2.png'} title={'SMC'} />
+                <SquareCard icon={'/image/association3.png'} title={'Federació veus'} />
+            </div>
+            <p className="px-6 mt-6 text-md text-[#444]">Profesionales del sector</p>
+            <div className="relative w-full grid grid-cols-3 px-16 py-4 gap-3">
+                <SquareCard icon={'/image/professional1.png'} title={'Laura Horcajo'} />
+                <SquareCard icon={'/image/professional2.png'} title={'Dra. Sara Siddi'} />
+                <SquareCard icon={'/image/professional3.png'} title={'Dr. Eduard'} />
+            </div>
+            <p className="px-6 mt-6 text-xl font-bold text-[#444]">Grupos de interés</p>
+            <p className="px-6 mt-1 text-sm text-[#444]">Conoce a personas con los mismos intereses que tu</p>
+            <div className="relative w-full grid grid-cols-3 px-16 py-4 gap-3 mb-6">
+                <SquareCard icon={'/icon/interest1.png'} title={'Club del cine'} />
+                <SquareCard icon={'/icon/interest2.png'} title={'Club de la lectura'} />
+                <SquareCard icon={'/icon/interest3.png'} title={'Club del teatro'} />
+                <SquareCard icon={'/icon/interest4.png'} title={'Club de las caminatas'} />
+                <SquareCard icon={'/icon/interest5.png'} title={'Club del manga'} />
+                <SquareCard icon={'/icon/interest6.png'} title={'Club de las plantas'} />
             </div>
             <BottomComponent title={'¿Tienes dudas sobre tu medicación?'} />
         </>

@@ -1,7 +1,6 @@
 import { usePatientMedication } from '@/server/medication';
-import { useCreateMedicationHistory, usePatientMedicationHistory } from '@/server/medicationHistory';
+import { useCreateMedicationHistory, useTodayMedication } from '@/server/medicationHistory';
 import Image from 'next/image';
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { RiCircleFill, RiCircleLine, RiLoader4Fill } from 'react-icons/ri';
 
@@ -15,19 +14,15 @@ interface Inputs {
 
 const MedicationTracker = ({ patientId }: Props) => {
     const patientMedication = usePatientMedication(patientId);
-    const patientMedicationHistory = usePatientMedicationHistory(patientMedication?.data?.map(({ id }) => id));
-
+    const todayMedication = useTodayMedication(patientId);
     const createMedication = useCreateMedicationHistory();
     const now = new Date();
 
     const { register, handleSubmit } = useForm<Inputs>({});
 
-    const [selected, setSelected] = useState<string[]>([]);
-
     const onSubmit = async (data: Inputs) => {
         if (!data.medication) return;
-        createMedication.mutate({ medicationId: data.medication });
-        setSelected((prev) => [...prev, data.medication]);
+        createMedication.mutate({ medicationId: data.medication, patientId });
     };
 
     return (
@@ -35,19 +30,9 @@ const MedicationTracker = ({ patientId }: Props) => {
             <fieldset className="relative w-full flex flex-wrap p-2 gap-3">
                 {patientMedication.data?.map(({ id, hour, name }) => {
                     const medicationTime = new Date(now.toDateString() + ' ' + hour);
-                    const medicationIndex = patientMedicationHistory.todayMedicationHistory?.findIndex(
-                        (history) => history.length > 0 && history[0].medication_id === id
-                    );
-
-                    const isSelected = selected.find((medicationId) => medicationId === id) !== undefined;
 
                     const medicationTaken =
-                        medicationIndex === undefined || medicationIndex < 0
-                            ? false
-                            : patientMedicationHistory.todayMedicationHistory &&
-                              patientMedicationHistory.todayMedicationHistory[medicationIndex].find(
-                                  ({ medication_id }) => medication_id === id
-                              ) !== undefined;
+                        todayMedication.data && todayMedication.data.find(({ medication_id }) => medication_id === id);
 
                     const hourFormatted = hour.slice(0, -3);
 
@@ -69,14 +54,14 @@ const MedicationTracker = ({ patientId }: Props) => {
                             <p className="text-sm font-semibold peer-disabled:opacity-30">{name}</p>
                             <p className="text-xs opacity-50 peer-disabled:opacity-30 pb-2">{hourFormatted}</p>
 
-                            {patientMedicationHistory.isLoading && <RiLoader4Fill className="w-6 h-6 animate-spin" />}
-                            {!patientMedicationHistory.isLoading && !isSelected && !medicationTaken && (
+                            {todayMedication.isLoading && <RiLoader4Fill className="w-6 h-6 animate-spin" />}
+                            {!todayMedication.isLoading && !medicationTaken && (
                                 <RiCircleLine className="block peer-checked:hidden peer-disabled:opacity-30 w-6 h-6" />
                             )}
-                            {!patientMedicationHistory.isLoading && !isSelected && !medicationTaken && (
+                            {!todayMedication.isLoading && !medicationTaken && (
                                 <RiCircleFill className="hidden peer-checked:block w-6 h-6 text-[#267B66]" />
                             )}
-                            {!patientMedicationHistory.isLoading && (isSelected || medicationTaken) && (
+                            {!todayMedication.isLoading && medicationTaken && (
                                 <Image
                                     src={'/icon/tick.png'}
                                     alt={'check'}

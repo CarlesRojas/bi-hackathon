@@ -3,12 +3,12 @@ import Loading from '@/components/Loading';
 import BottomComponent from '@/components/patient/BottomComponent';
 import Card, { Tag, TagBackgroundColor, TagColor } from '@/components/patient/Card';
 import Header from '@/components/patient/Header';
+import SquareCard from '@/components/patient/SquareCard';
 import { useUser } from '@/server/user';
 import { GetServerSidePropsContext } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
-import SquareCard from "@/components/patient/SquareCard";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     return { props: { patientId: context.params?.patientId } };
@@ -46,7 +46,6 @@ export default function PatientCommunity() {
                     image={'/image/event.png'}
                     tag={Tag.EVENT}
                     title={'Caminata Solidaria'}
-                    isOpen
                     subtitle={'ACFAME - Hoy, 19 de Noviembre - Barceloneta - 19:30h'}
                     content={
                         <div className="relative flex flex-col gap-2 w-full">
@@ -216,7 +215,9 @@ export default function PatientCommunity() {
                 </div>
             </section>
             <p className="px-6 mt-6 text-xl font-bold text-[#444]">Conociendo mi comunidad</p>
-            <p className="px-6 mt-1 text-sm text-[#444]">Encuentra las personas y entidades que hacen posible estos espacios de encuentro</p>
+            <p className="px-6 mt-1 text-sm text-[#444]">
+                Encuentra las personas y entidades que hacen posible estos espacios de encuentro
+            </p>
             <p className="px-6 mt-6 text-md text-[#444]">Asociaciones</p>
             <div className="relative w-full grid grid-cols-3 px-16 py-4 gap-3">
                 <SquareCard icon={'/image/association1.png'} title={'ACFAME'} />

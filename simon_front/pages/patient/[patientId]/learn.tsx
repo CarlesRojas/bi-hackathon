@@ -65,7 +65,6 @@ export default function PatientLearn() {
                 <Card
                     image={'/image/formation1.png'}
                     showLike
-                    isOpen
                     tag={Tag.ARTICLE}
                     title={'La primera visita al psicólogo: Preguntas frecuentes'}
                     subtitle={'Alberto Soler - 5 min'}

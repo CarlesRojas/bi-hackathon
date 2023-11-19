@@ -8,7 +8,9 @@ export enum Tag {
     EDU = 'Educación',
     EVENT = 'Evento',
     ARTICLE = 'Artículo',
-    FORMATIONS = 'Formaciones'
+    FORMATIONS = 'Formaciones',
+    TALK = 'Charla',
+    INTEREST_GROUP = 'Grupo de interés'
 }
 
 interface Props {
@@ -29,7 +31,9 @@ export const TagBackgroundColor: Record<Tag, string> = {
     [Tag.EDU]: '#BABCF7',
     [Tag.EVENT]: '#FFBCC0',
     [Tag.ARTICLE]: '#FFBCC0',
-    [Tag.FORMATIONS]: '#C5D3F7'
+    [Tag.FORMATIONS]: '#C5D3F7',
+    [Tag.TALK]: '#C4C6FF',
+    [Tag.INTEREST_GROUP]: '#95E8CA'
 };
 
 export const TagColor: Record<Tag, string> = {
@@ -38,7 +42,9 @@ export const TagColor: Record<Tag, string> = {
     [Tag.EDU]: '#676BD9',
     [Tag.EVENT]: '#B3565B',
     [Tag.ARTICLE]: '#B3565B',
-    [Tag.FORMATIONS]: '#4A65AA'
+    [Tag.FORMATIONS]: '#4A65AA',
+    [Tag.TALK]: '#595CD4',
+    [Tag.INTEREST_GROUP]: '#518170'
 };
 
 const Card = ({ image, tag, showLike, isLike, title, subtitle, description, content, onClick }: Props) => {

@@ -22,6 +22,7 @@ interface Props {
     subtitle: string;
     description?: string;
     content?: ReactNode;
+    isOpen?: boolean;
     onClick?: () => void;
 }
 
@@ -47,8 +48,8 @@ export const TagColor: Record<Tag, string> = {
     [Tag.INTEREST_GROUP]: '#518170'
 };
 
-const Card = ({ image, tag, showLike, isLike, title, subtitle, description, content, onClick }: Props) => {
-    const [open, setOpen] = useState(false);
+const Card = ({ image, tag, showLike, isLike, isOpen, title, subtitle, description, content, onClick }: Props) => {
+    const [open, setOpen] = useState(isOpen ?? false);
     const [liked, setLiked] = useState(isLike);
 
     return (

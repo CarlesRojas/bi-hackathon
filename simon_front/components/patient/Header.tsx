@@ -10,7 +10,7 @@ interface Props {
 const Header = ({ icon, title, subtitle }: Props) => {
     return (
         <div className="bg-white opacity-70 rounded-b-[3rem] shadow-xl">
-            <div className="w-full flex flex-col items-center py-12">
+            <div className="w-full flex flex-col items-center py-12 px-6 text-center">
                 <div className="w-fit flex gap-3 pb-5 text-[#265A38]">
                     {icon}
                     <h1 className="text-2xl">{title}</h1>

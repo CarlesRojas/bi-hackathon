@@ -1,6 +1,7 @@
 import ErrorMessage from '@/components/ErrorMessage';
 import Loading from '@/components/Loading';
 import Card, { Tag } from '@/components/patient/Card';
+import MedicationTracker from '@/components/patient/MedicationTracker';
 import { usePatientMedication } from '@/server/medication';
 import { useUser } from '@/server/user';
 import { GetServerSidePropsContext } from 'next';
@@ -109,11 +110,7 @@ export default function PatientHome() {
                     title={'Toma de medicación'}
                     subtitle={`${2}/${patientMedication.data?.length ?? 0}      ¡Vamos a cuidarnos!`}
                     description={'Tienes pendiente registrar tu toma'}
-                    content={
-                        <div>
-                            <p>Hola</p>
-                        </div>
-                    }
+                    content={<MedicationTracker patientId={patientId} />}
                 />
 
                 <Card

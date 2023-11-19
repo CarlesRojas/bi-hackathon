@@ -1,12 +1,12 @@
 import ErrorMessage from '@/components/ErrorMessage';
 import Loading from '@/components/Loading';
-import { useUser } from '@/server/user';
-import { GetServerSidePropsContext } from 'next';
-import { useRouter } from 'next/router';
-import { ReactNode } from 'react';
 import Card, { Tag, TagBackgroundColor, TagColor } from '@/components/patient/Card';
 import Header from '@/components/patient/Header';
+import { useUser } from '@/server/user';
+import { GetServerSidePropsContext } from 'next';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { ReactNode } from 'react';
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     return { props: { patientId: context.params?.patientId } };
@@ -259,7 +259,7 @@ export default function PatientLearn() {
             </div>
             <p className="px-6 mt-6 text-lg text-[#39B2B2]">¡Tu planta está aprendiendo y creciendo contigo!</p>
             <Image
-                src={'/image/plant_0.png'}
+                src={'/image/main_plant.png'}
                 alt="icon"
                 className="w-full px-16 py-4 object-contain"
                 width={512}

@@ -92,7 +92,7 @@ export default function PatientHome() {
                 <div className="w-full pointer-events-none select-none">
                     <Image
                         className="w-full h-full"
-                        src={'/image/plant_0.png'}
+                        src={'/image/main_plant.png'}
                         alt={'your plant'}
                         width={512}
                         height={512}

@@ -61,7 +61,7 @@ export default function PatientMedication() {
                 <p className="w-full text-center px-6 text-lg text-[#39B2B2]">¡Tu planta se ve fenomenal!</p>
 
                 <Image
-                    src={'/image/plant_0.png'}
+                    src={'/image/main_plant.png'}
                     alt="icon"
                     className="w-full px-16 py-4 object-contain"
                     width={512}

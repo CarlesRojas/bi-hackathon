@@ -1,4 +1,4 @@
-from typing import Dict, Any
+from typing import Any, Dict
 
 from django.db.models import Q
 from django.http import HttpRequest, JsonResponse
@@ -9,13 +9,15 @@ from backend.models import MedicationHistory
 
 @require_http_methods(["GET"])
 def get(request: HttpRequest, medication_id: str) -> JsonResponse:
-    medication_history = MedicationHistory.objects.filter(Q(medication_id=medication_id))
+    medication_history = MedicationHistory.objects.filter(
+        Q(medication_id=medication_id)
+    )
     return JsonResponse(list(map(serialize, medication_history)), safe=False)
 
 
-@require_http_methods(["POST"])
-def create(request: HttpRequest) -> JsonResponse:
-    MedicationHistory(medication_id=request.POST.get("medication_id")).save()
+@require_http_methods(["GET"])
+def create(request: HttpRequest, medication_id: str) -> JsonResponse:
+    MedicationHistory(medication_id=medication_id).save()
     return JsonResponse({"status": "ok"})
 
 
